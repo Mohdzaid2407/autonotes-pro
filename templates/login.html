@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2>Login</h2>
+        <p class="auth-subtext">Access your AutoNotes dashboard</p>
+
+        <form method="POST" class="auth-form">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <button type="submit" class="btn btn-primary full-btn">Login</button>
+        </form>
+
+        <p class="auth-bottom-text">
+            Don't have an account?
+            <a href="/register">Register</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

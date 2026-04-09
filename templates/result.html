@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="detail-wrapper">
+    <div class="detail-card">
+        <h1>Audio Processed Successfully</h1>
+        <p><strong>Uploaded file:</strong> {{ filename }}</p>
+        <p><strong>Detected topic:</strong> {{ topic }}</p>
+    </div>
+
+    <div class="detail-card">
+        <h2>Keywords</h2>
+        <div class="keyword-wrap">
+            {% if keywords %}
+                {% for keyword in keywords %}
+                    <span class="keyword-badge">{{ keyword }}</span>
+                {% endfor %}
+            {% else %}
+                <p>No keywords found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="detail-card">
+        <h2>Summary</h2>
+        <p>{{ summary }}</p>
+    </div>
+
+    <div class="detail-card">
+        <h2>Transcript</h2>
+        <div class="transcript-box">
+            <p>{{ transcript }}</p>
+        </div>
+    </div>
+
+    <div class="card-actions">
+        <a href="/note/{{ note_id }}" class="btn btn-secondary">View Full Note</a>
+        <a href="/export-pdf/{{ note_id }}" class="btn btn-primary">Download PDF</a>
+        <a href="/history" class="btn btn-secondary">History</a>
+        <a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div>
+        <h1>Welcome, {{ session['user_name'] }}</h1>
+        <p>Manage your audio notes, summaries, and exports from one place.</p>
+    </div>
+
+    <div class="dashboard-actions">
+        <a href="/upload" class="btn btn-primary">Upload Audio</a>
+        <a href="/history" class="btn btn-secondary">View History</a>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>{{ total_notes }}</h3>
+        <p>Total Notes</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ total_topics }}</h3>
+        <p>Total Topics</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ top_topic }}</h3>
+        <p>Most Frequent Topic</p>
+    </div>
+</div>
+
+<div class="search-bar-card">
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search by title, topic, summary, keywords..." required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="content-section">
+    <h2 class="section-title">Recent Notes</h2>
+
+    {% if notes %}
+        <div class="card-grid notes-grid">
+            {% for note in notes %}
+                <div class="note-card">
+                    <h3>{{ note[1] }}</h3>
+                    <p><strong>Topic:</strong> {{ note[2] }}</p>
+                    <p><strong>Summary:</strong> {{ note[3] }}</p>
+                    <p><strong>Date:</strong> {{ note[4] }}</p>
+
+                    <div class="card-actions">
+                        <a href="/note/{{ note[0] }}" class="btn btn-secondary">View</a>
+                        <a href="/export-pdf/{{ note[0] }}" class="btn btn-primary">PDF</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-card">
+            <h3>No notes available yet</h3>
+            <p>Upload your first audio file to generate notes and summaries.</p>
+            <a href="/upload" class="btn btn-primary">Upload Now</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

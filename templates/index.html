@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-badge">AI Powered Voice Notes Platform</p>
+        <h1>Convert Audio into Smart Notes Instantly</h1>
+        <p class="hero-text">
+            AutoNotes Pro helps students and professionals convert voice recordings into text,
+            generate summaries, extract keywords, detect topics, and save everything in one place.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/register" class="btn btn-primary">Get Started</a>
+            <a href="/login" class="btn btn-secondary">Login</a>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <h2 class="section-title">Core Features</h2>
+
+    <div class="card-grid">
+        <div class="feature-card">
+            <h3>Audio Upload</h3>
+            <p>Upload voice files quickly and process them inside your personal dashboard.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Speech to Text</h3>
+            <p>Automatically convert audio recordings into readable text using AI.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Smart Summary</h3>
+            <p>Generate a concise summary from long transcripts for faster revision.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Keywords & Topic</h3>
+            <p>Extract important keywords and detect the main topic of your content.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>PDF Export</h3>
+            <p>Download processed notes in PDF format for sharing and documentation.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>History & Management</h3>
+            <p>Store, review, revisit, and manage all your generated notes easily.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

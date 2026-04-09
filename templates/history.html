@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-section">
+    <div class="dashboard-header">
+        <div>
+            <h1>Notes History</h1>
+            <p>Review all previously generated notes and exports.</p>
+        </div>
+        <div class="dashboard-actions">
+            <a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+            <a href="/upload" class="btn btn-primary">Upload More</a>
+        </div>
+    </div>
+
+    {% if notes %}
+        <div class="card-grid notes-grid">
+            {% for note in notes %}
+                <div class="note-card">
+                    <h3>{{ note[1] }}</h3>
+                    <p><strong>Topic:</strong> {{ note[2] }}</p>
+                    <p><strong>Keywords:</strong> {{ note[3] }}</p>
+                    <p><strong>Summary:</strong> {{ note[4] }}</p>
+                    <p><strong>Created At:</strong> {{ note[5] }}</p>
+
+                    <div class="card-actions">
+                        <a href="/note/{{ note[0] }}" class="btn btn-secondary">View</a>
+                        <a href="/export-pdf/{{ note[0] }}" class="btn btn-primary">PDF</a>
+                        <a href="/delete-note/{{ note[0] }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this note?')">Delete</a>
+                        <a href="/edit-note/{{ note[0] }}" class="btn btn-secondary">Edit</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-card">
+            <h3>No history found</h3>
+            <p>Your uploaded and processed notes will appear here.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

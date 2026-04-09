@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div>
+        <h1>Search Notes</h1>
+        <p>Find notes by title, topic, keywords, transcript, or summary.</p>
+    </div>
+    <div class="dashboard-actions">
+        <a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+    </div>
+</div>
+
+<div class="search-bar-card">
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search your notes..." value="{{ query }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="content-section">
+    <h2 class="section-title">Results</h2>
+
+    {% if notes %}
+        <div class="card-grid notes-grid">
+            {% for note in notes %}
+                <div class="note-card">
+                    <h3>{{ note[1] }}</h3>
+                    <p><strong>Topic:</strong> {{ note[2] }}</p>
+                    <p><strong>Keywords:</strong> {{ note[3] }}</p>
+                    <p><strong>Summary:</strong> {{ note[4] }}</p>
+                    <p><strong>Date:</strong> {{ note[5] }}</p>
+
+                    <div class="card-actions">
+                        <a href="/note/{{ note[0] }}" class="btn btn-secondary">View</a>
+                        <a href="/export-pdf/{{ note[0] }}" class="btn btn-primary">PDF</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-card">
+            <h3>No matching notes found</h3>
+            <p>Try another keyword or upload more notes.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

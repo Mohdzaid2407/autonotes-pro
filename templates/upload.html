@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-page">
+    <div class="form-card">
+        <h2>Upload Audio File</h2>
+        <p class="auth-subtext">Supported audio files can be processed into smart notes</p>
+
+        <form method="POST" enctype="multipart/form-data" class="auth-form">
+            <input type="file" name="audio" required>
+            <button type="submit" class="btn btn-primary full-btn">Upload & Process</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
